@@ -12,6 +12,13 @@
             $.writeln(printers[i]);
         }
         $.writeln("===================");
+        
+        var pl = app.printerList[1];
+        var papers = pl.printerInfo.paperSizes;
+        for(var j=0;j<papers.length;j++){
+            $.writeln(papers[j]);            
+        }
+        $.writeln("===================");
     }
 
     function getPrisets(){
@@ -31,7 +38,7 @@
         colorOpt.name = "ColorMatch RGB";
         colorOpt.intent = PrintColorIntent.RELATIVECOLORIMETRIC;
         printSetOut.colorManagementOptions = colorOpt;
-        activeDocument.print(printSetOut);
+        //activeDocument.print(printSetOut);
     }
     /*
     function getMoreProperty(obj){
