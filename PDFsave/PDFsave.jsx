@@ -31,7 +31,7 @@
     function PDF(path){
         var savePath = new File(path);
         var option = new PDFSaveOptions();
-        option.compatibility = PDFCompatibility.ACROBAT8;
+        option.compatibility = PDFCompatibility.ACROBAT7;
         activeDocument.saveAs(savePath,option);
     }
 

@@ -1,8 +1,38 @@
-(function(){
+ (function(){
     //var mm = 0.352778;
+    if(!selectTrim()){
+        return false;
+    }
+
     var barPath = new File(Folder.desktop + "/colorbar/" + "Colors.eps");
     
     //var item = app.selecttion[0];
+    function selectTrim(){
+        var cutLayers = ["トンボ","trim"];
+        for(var i=0;i<cutLayers.length;i++){
+            try{
+                for(var j = 0;j<activeDocument.layers[cutLayers[i]].pageItems.length;j++){
+                    try{
+                        activeDocument.layers[cutLayers[i]].pageItems[j].selected = true;
+                    }catch(e){
+                        alert("the item is locked");
+                    }
+                }
+            }catch(e){
+
+            }
+        }
+        if(app.selection.length < 1){
+            alert("there's no item");
+            return false;
+        }
+        if(app.selection.length > 1){
+            app.executeMenuCommand("group");
+        }
+        return true;
+    }
+
+
     function TriMark(){
         var item = app.selection[0];
         this.x1 = item.geometricBounds[0];
@@ -59,6 +89,19 @@
         trim.moveVertical()
     }else{
         alert("the value is invalid");
+    }
+
+    for(var j = 0;j<activeDocument.layers["colorBar"].pageItems.length;j++){
+                    try{
+                        activeDocument.layers["colorBar"].pageItems[j].selected = true;
+                    }catch(e){
+                        alert("the item is locked");
+                    }
+    }
+    var flag = activeDocument.fitArtboardToSelectedArt(0);
+    if(!flag){
+        alert("there's no any artboard");
+        return false;
     }
     
    //trim.moveHorizontal();
