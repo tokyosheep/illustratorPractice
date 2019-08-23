@@ -1,0 +1,425 @@
+*PPD-Adobe: "4.3"
+*% PostScript(R) Printer Description File
+*% Copyright (c) 2003-2010 ONYX Graphics, Inc.  All rights reserved.
+
+*FormatVersion: "4.3"
+*FileVersion: "1.7"
+*LanguageEncoding: JIS83-RKSJ
+*LanguageVersion: Japanese
+*PCFileName: "HP DJ Z6200 60-2 Onyx PosterShop 10.1.ppd"
+*Manufacturer: "Onyx Graphics"
+*Product: "(HP DJ Z6200 60-2 Onyx PosterShop 10.1)"
+*PSVersion: "(3011.104) 0"
+*ModelName: "HP DJ Z6200 60-2 Onyx PosterShop 10.1"
+*ShortNickName: "HP DJ Z6200 60-2 Onyx Poster3CA"
+*NickName: "HP DJ Z6200 60-2 Onyx PosterShop 10.1"
+
+*% === Device Capabilities ===
+
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: True
+*?FileSystem: "(True) == flush"
+*LanguageLevel: "3"
+*FreeVM: "4194304"
+*VMOption None/Standard: "4194304"
+*FCacheSize None/Standard: 204800
+*Throughput: "400"
+*VariablePaperSize: True
+
+*TTRasterizer: Type42
+*?TTRasterizer: "(Type42) ="
+
+*Password: "()"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+     (WARNING: Cannot modify initial VM.) =
+     (Missing or invalid password.) =
+     (Please contact the author of this software.) = flush quit
+     } if
+"
+*End
+
+*% ==== In-RIP Trapping Information ========
+*Resource TrappingType: Virtual
+*TrappingTypeInstance 1001: ""
+*Separations True: " 1 dict dup /Separations true put setpagedevice "
+*DefaultSeparations: True
+*?Separations: "
+    save
+    currentpagedevice /Separations known
+      {currentpagedevice /Separations get
+        { (True) } { (False) } ifelse
+      }{ (Unknown) } ifelse
+    print (\n) print flush
+    restore
+"
+*End
+
+*% Halftone Information
+*ContoneOnly: False
+*DefaultHalftoneType: 1
+*ScreenFreq: "60.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "{ abs exch abs 2 copy add 1 gt {1 sub dup mul exch 1 sub 
+dup mul add 1 sub} {dup mul exch dup mul add 1 exch sub}ifelse } bind"
+*End
+*ScreenProc Line: "{ exch pop abs neg } bind"
+*ScreenProc Ellipse: "{abs exch abs 2 copy 3 mul exch 4 mul add 3 sub dup 0
+lt { pop dup mul exch .75 div dup mul add 4 div 1 exch sub } { dup 1 gt{
+pop 1 exch sub dup mul exch 1 exch sub .75 div dup mul add 4 div 1 sub }
+{ .5 exch sub exch pop exch pop } ifelse  } ifelse } bind"
+*End
+*ScreenProc Cross: "{ abs exch abs 2 copy gt { exch } if pop neg } bind"
+
+
+*DefaultTransfer: Null
+*Transfer Null: "{ } bind"
+*Transfer Null.Inverse: "{ 1 exch sub } bind"
+
+
+*OpenUI *PageSize: PickOne
+*OrderDependency: 50 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter: "
+  2 dict dup /PageSize [612 792] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize Legal: "
+  2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize Executive: "
+  2 dict dup /PageSize [522 756] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize Ledger: "
+  2 dict dup /PageSize [1224 792] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize Tabloid: "
+  2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize Screen: "
+  2 dict dup /PageSize [468 373] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize A3: "
+  2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageSize A4: "
+  2 dict dup /PageSize [595 842] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*?PageSize: "
+save
+     currentpagedevice /PageSize get aload pop
+      2 copy gt {exch} if
+      (Unknown)
+      8 dict
+      dup [612 792] (Letter) put
+      dup [612 1008] (Legal) put
+      dup [522 756] (Executive) put
+      dup [1224 792] (Ledger) put
+      dup [792 1224] (Tabloid) put
+      dup [468 373] (Screen) put
+      dup [842 1191] (A3) put
+      dup [595 842] (A4) put
+      { exch aload pop 4 index sub abs 5 le exch
+        5 index sub abs 5 le and
+         { exch pop exit } { pop } ifelse
+      } bind forall
+      = flush pop pop
+  restore
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 50 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter: "
+  2 dict dup /PageSize [612 792] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion Legal: "
+  2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion Executive: "
+  2 dict dup /PageSize [522  756] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion Ledger: "
+  2 dict dup /PageSize [1224  792] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion Tabloid: "
+  2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion Screen: "
+  2 dict dup /PageSize [468 373] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion A3: "
+  2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*PageRegion A4: "
+  2 dict dup /PageSize [595 842] put dup /ImagingBBox null put
+setpagedevice"
+*End
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: Letter
+*ImageableArea Letter: "0.0 0.0 612.0 792.0"
+*ImageableArea Legal: "0.0 0.0 612.0 1008.0"
+*ImageableArea Executive: "0.0 0.0 522.0 756.0"
+*ImageableArea Ledger: "0.0 0.0 1224.0 792.0"
+*ImageableArea Tabloid: "0.0 0.0 792.0 1224.0"
+*ImageableArea Screen: "0.0 0.0 468.0 373.0"
+*ImageableArea A3: "0.0 0.0 842.0 1191.0"
+*ImageableArea A4: "0.0 0.0 595.0 842.0"
+*?ImageableArea: "
+save
+  /cvp { (                ) cvs print ( ) print } bind def
+  /upperright {10000 mul floor 10000 div} bind def
+  /lowerleft {10000 mul ceiling 10000 div} bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {lowerleft cvp} repeat
+  exch 2 {upperright cvp} repeat flush
+ restore
+"
+*End
+
+*DefaultPaperDimension: Letter
+*PaperDimension Letter: "612 792"
+*PaperDimension Legal: "612 1008"
+*PaperDimension Executive: "522 756"
+*PaperDimension Ledger: "1224 792"
+*PaperDimension Tabloid: "792 1224"
+*PaperDimension Screen: "468 373"
+*PaperDimension A3: "842 1191"
+*PaperDimension A4: "595 842"
+
+*%=== Custom Page Sizes =============
+
+*CustomPageSize True: "
+ 4 dict begin
+ 3 1 roll
+ 2 array astore /PageOffset exch def
+ 2 mod 0 eq
+ {
+  exch /PrintTransverse 1 def
+ }if
+ 2 array astore /PageSize exch def
+ /ImagingBBox null def
+ currentdict end setpagedevice"
+*End
+
+*ParamCustomPageSize Width: 1 points 1 43200
+*ParamCustomPageSize Height: 2 points 1 43200
+*ParamCustomPageSize WidthOffset: 3 points 0 21600
+*ParamCustomPageSize HeightOffset: 4 points 0 21600
+*ParamCustomPageSize Orientation: 5 int 0 1
+*MaxMediaWidth: "43200"
+*CenterRegistered: False
+*LeadingEdge Forced: ""
+*DefaultLeadingEdge: Forced
+
+*RequiresPageRegion All: True
+
+*AccurateScreensSupport: True
+
+*% Printer Messages (verbatim from printer):
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ]%% )
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+
+*% Font Information 
+
+*?FontQuery: "
+ save
+   { count 1 gt
+      { exch dup 127 string cvs (/) print print (:) print
+        /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+      } { exit } ifelse
+   } bind loop
+   (*) = flush
+ restore
+"
+*End
+
+*?FontList: "
+   save
+(*) {cvn ==} 128 string /Font resourceforall
+   (*) = flush
+restore
+"
+*End
+
+*DefaultFont: Courier
+*Font Courier: Standard "(004.000)" Standard ROM
+*Font Courier-Bold: Standard "(004.000)" Standard ROM
+*Font Courier-BoldOblique: Standard "(004.000)" Standard ROM
+*Font Courier-Oblique: Standard "(004.000)" Standard ROM
+*Font Symbol: Special "(001.008)" Special ROM
+*Font ZapfDingbats: Special "(002.000)" Special ROM
+
+*% Other Onyx Job Settings Options =====================
+
+*% Print Transverse option
+*OpenUI *PrintTransverse/Print Transverse: PickOne
+*OrderDependency: 15 AnySetup *PrintTransverse
+*DefaultPrintTransverse: Default
+*PrintTransverse Default: ""
+*PrintTransverse True/On: "%%ONYX PrintTransverse True"
+*PrintTransverse False/Off: "%%ONYX PrintTransverse False"
+*CloseUI *PrintTransverse
+
+*% Print label option
+*OpenUI *PrintLabel/Print Label: PickOne
+*OrderDependency: 15 AnySetup *PrintLabel
+*DefaultPrintLabel: Default
+*PrintLabel Default: ""
+*PrintLabel On: "%%ONYX PrintLabel True"
+*PrintLabel Off: "%%ONYX PrintLabel False"
+*CloseUI *PrintLabel
+
+*% Crop Marks option
+*OpenUI *CropMarks/Crop Marks: PickOne
+*OrderDependency: 15 AnySetup *CropMarks
+*DefaultCropMarks: Default
+*CropMarks Default: ""
+*CropMarks Off: "%%ONYX CropMarks False"
+*CropMarks On: "%%ONYX CropMarks True"
+*CropMarks Outline: "%%ONYX CropMarks Outline"
+*CloseUI *CropMarks
+
+*% Registration Marks option
+*OpenUI *RegistrationMarks/Registration Marks: PickOne
+*OrderDependency: 15 AnySetup *RegistrationMarks
+*DefaultRegistrationMarks: Default
+*RegistrationMarks Default: ""
+*RegistrationMarks Off: "%%ONYX RegMarks False"
+*RegistrationMarks On: "%%ONYX RegMarks True"
+*CloseUI *RegistrationMarks
+
+*% Hold indefinitely
+*OpenUI *HoldIndefinite/Hold Indefinite: PickOne
+*OrderDependency: 15 AnySetup *HoldIndefinite
+*DefaultHoldIndefinite: Default
+*HoldIndefinite Default: ""
+*HoldIndefinite Yes: "%%ONYX HoldIndefinite True"
+*HoldIndefinite No: "%%ONYX HoldIndefinite False"
+*CloseUI *HoldIndefinite
+
+*% Delete Image after processing?
+*OpenUI *DeleteImageAfterProcess/Delete Image After Processing: PickOne
+*OrderDependency: 15 AnySetup *DeleteImageAfterProcess
+*DefaultDeleteImageAfterProcess: Default
+*DeleteImageAfterProcess Default: ""
+*DeleteImageAfterProcess Yes: "%%ONYX DeleteImageAfterProcess True"
+*DeleteImageAfterProcess No: "%%ONYX DeleteImageAfterProcess False"
+*CloseUI *DeleteImageAfterProcess
+
+*% After print job option
+*OpenUI *ArchiveJobAfterPrint/Archive Job After Printing: PickOne
+*OrderDependency: 15 AnySetup *ArchiveJobAfterPrint
+*DefaultArchiveJobAfterPrint: Default
+*ArchiveJobAfterPrint Default: ""
+*ArchiveJobAfterPrint Yes: "%%ONYX ArchiveJobAfterPrint True"
+*ArchiveJobAfterPrint No: "%%ONYX ArchiveJobAfterPrint False"
+*CloseUI
+
+*% Mode option
+*OpenUI *Mode/Mode: PickOne
+*OrderDependency: 50 AnySetup *Mode
+*DefaultMode: Default
+*Mode Default: ""
+*Mode OnyxMode0/BackLight_600x1200_12p: "%%ONYX Mode BackLight_600x1200_12p^BackLightFilm [CMYKR]"
+*Mode OnyxMode1/__1_BackLightFilm_[CMYKR]: "%%ONYX Mode BackLight_600x1200_12p^BackLightFilm [CMYKR]"
+*Mode OnyxMode2/BackLightFilm_Wst_1200VarDot: "%%ONYX Mode BackLightFilm_Wst_1200VarDot^BackLightFilm_Wstk [CMYKR]"
+*Mode OnyxMode3/__2_BackLightFilm_Wstk_[CMYKR]: "%%ONYX Mode BackLightFilm_Wst_1200VarDot^BackLightFilm_Wstk [CMYKR]"
+*Mode OnyxMode4/1200-VarDot,_Stochastic,8passBidir: "%%ONYX Mode 1200-VarDot, Stochastic, 8 pass Bidir^HP Artist Matte Canvas [CMYKR]"
+*Mode OnyxMode5/__3_HP_Artist_Matte_Canvas_[CMYKR]: "%%ONYX Mode 1200-VarDot, Stochastic, 8 pass Bidir^HP Artist Matte Canvas [CMYKR]"
+*Mode OnyxMode6/3HPEverydayAdhesiveMattePolypropyl: "%%ONYX Mode 1200-VarDot, Stochastic, 8 pass Bidir^HP Everyday Adhesive Matte Polypropylene [CMYKR]"
+*Mode OnyxMode7/__3HPHeavyweightCoatedPaper[CMYKR]: "%%ONYX Mode 1200-VarDot, Stochastic, 8 pass Bidir^HP Heavyweight Coated Paper [CMYKR]"
+*Mode OnyxMode8/__3_HP_Opaque_Scrim_[CMYKR]: "%%ONYX Mode 1200-VarDot, Stochastic, 8 pass Bidir^HP Opaque Scrim [CMYKR]"
+*Mode OnyxMode9/600x1200-VarDot,Stochastic8passBid: "%%ONYX Mode 600x1200-VarDot, Stochastic 8 pass Bidir^HP Everyday Pigment Ink Gloss Photo Paper [CMYKR]"
+*Mode OnyxMode10/4HPEverydayPigmentInkGlossPhotoPap: "%%ONYX Mode 600x1200-VarDot, Stochastic 8 pass Bidir^HP Everyday Pigment Ink Gloss Photo Paper [CMYKR]"
+*Mode OnyxMode11/4HPEverydayPigmentInkSatinPhotoPap: "%%ONYX Mode 600x1200-VarDot, Stochastic 8 pass Bidir^HP Everyday Pigment Ink Satin Photo Paper [CMYKR]"
+*Mode OnyxMode12/600x1200-VarDot,Stochastic,8passBi: "%%ONYX Mode 600x1200-VarDot, Stochastic, 8 pass Bidir^HP Premium Instant-dry Gloss Photo Paper [CMYKR]"
+*Mode OnyxMode13/5HPPremiumInstant-dryGlossPhotoPap: "%%ONYX Mode 600x1200-VarDot, Stochastic, 8 pass Bidir^HP Premium Instant-dry Gloss Photo Paper [CMYKR]"
+*Mode OnyxMode14/5HPPremiumInstant-drySatinPhotoPap: "%%ONYX Mode 600x1200-VarDot, Stochastic, 8 pass Bidir^HP Premium Instant-dry Satin Photo Paper [CMYKR]"
+*Mode OnyxMode15/1200-VarDot,Stochastic,12passBidir: "%%ONYX Mode 1200-VarDot, Stochastic, 12 pass Bidir^HP Premium Vivid Color Backlit Film [CMYKR]"
+*Mode OnyxMode16/6HPPremiumVividColorBacklitFilm[CM: "%%ONYX Mode 1200-VarDot, Stochastic, 12 pass Bidir^HP Premium Vivid Color Backlit Film [CMYKR]"
+*Mode OnyxMode17/1200-VarDot_Stochastic_8_passBidir: "%%ONYX Mode 1200-VarDot Stochastic 8 pass Bidir^HP Super Heavyweight Plus Matte Paper [CMYKR]"
+*Mode OnyxMode18/7HPSuperHeavyweightPlusMattePaper[: "%%ONYX Mode 1200-VarDot Stochastic 8 pass Bidir^HP Super Heavyweight Plus Matte Paper [CMYKR]"
+*Mode OnyxMode19/Nichie_Yupo_1200x600_6S_0124: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0124^NIchie_Yupo_1200x600_6S_0124 [CMYKR]"
+*Mode OnyxMode20/__8NIchieYupo1200x6006S0124[CMYKR]: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0124^NIchie_Yupo_1200x600_6S_0124 [CMYKR]"
+*Mode OnyxMode21/Nichie_Yupo_1200Vd_12P: "%%ONYX Mode Nichie_Yupo_1200Vd_12P^Nichie_Yupo_1200Vd_12P_0214 [CMYKR]"
+*Mode OnyxMode22/__9_NichieYupo1200Vd12P0214[CMYKR]: "%%ONYX Mode Nichie_Yupo_1200Vd_12P^Nichie_Yupo_1200Vd_12P_0214 [CMYKR]"
+*Mode OnyxMode23/Nicie_Yupo_1200X600_6p_Custom: "%%ONYX Mode Nicie_Yupo_1200X600_6p_Custom^Nichie_Yupo_1200X600_6p_Custom [CMYKR]"
+*Mode OnyxMode24/10NichieYupo1200X6006pCustom[CMYKR: "%%ONYX Mode Nicie_Yupo_1200X600_6p_Custom^Nichie_Yupo_1200X600_6p_Custom [CMYKR]"
+*Mode OnyxMode25/Nichie_Yupo_1200x600_6S_0201: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0201^Nichie_Yupo_1200x600_6S_0201 [CMYKR]"
+*Mode OnyxMode26/_11NichieYupo1200x6006S0201[CMYKR]: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0201^Nichie_Yupo_1200x600_6S_0201 [CMYKR]"
+*Mode OnyxMode27/__11_custom_[CMYKR]: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0201^custom [CMYKR]"
+*Mode OnyxMode28/__11_custom2_[CMYKR]: "%%ONYX Mode Nichie_Yupo_1200x600_6S_0201^custom2 [CMYKR]"
+*Mode OnyxMode29/PhotoGloss_1200x60_8S_0126: "%%ONYX Mode PhotoGloss_1200x60_8S_0126^PhotoGloss_1200x600_8S_0126 [CMYKR]"
+*Mode OnyxMode30/_12PhotoGloss1200x6008S0126[CMYKR]: "%%ONYX Mode PhotoGloss_1200x60_8S_0126^PhotoGloss_1200x600_8S_0126 [CMYKR]"
+*Mode OnyxMode31/PhotoGloss_1200x60_8S_0131: "%%ONYX Mode PhotoGloss_1200x60_8S_0131^PhotoGloss_1200x600_8S_0126 [CMYKR]"
+*Mode OnyxMode32/_13PhotoGloss1200x6008S0126[CMYKR]: "%%ONYX Mode PhotoGloss_1200x60_8S_0131^PhotoGloss_1200x600_8S_0126 [CMYKR]"
+*Mode OnyxMode33/PhotoGloss_1200x600_8S_0201: "%%ONYX Mode PhotoGloss_1200x600_8S_0201^PhotoGloss_1200x600_8S_0201 [CMYKR]"
+*Mode OnyxMode34/_14PhotoGloss1200x6008S0201[CMYKR]: "%%ONYX Mode PhotoGloss_1200x600_8S_0201^PhotoGloss_1200x600_8S_0201 [CMYKR]"
+*Mode OnyxMode35/UVMS3_1200Vd_10P_0214: "%%ONYX Mode UVMS3_1200Vd_10P_0214^UVMS3_1200Vd [CMYKR]"
+*Mode OnyxMode36/__15_UVMS3_1200Vd_[CMYKR]: "%%ONYX Mode UVMS3_1200Vd_10P_0214^UVMS3_1200Vd [CMYKR]"
+*Mode OnyxMode37/UVMS3_1200x600_8S: "%%ONYX Mode UVMS3_1200x600_8S^UVMS3_1200x600_8S [CMYKR]"
+*Mode OnyxMode38/__16_UVMS3_1200x600_8S_[CMYKR]: "%%ONYX Mode UVMS3_1200x600_8S^UVMS3_1200x600_8S [CMYKR]"
+*Mode OnyxMode39/WALJET_Pn_600x1200_6P: "%%ONYX Mode WALJET_Pn_600x1200_6P^WALJET_Pln [CMYKR]"
+*Mode OnyxMode40/__17_WALJET_Pln_[CMYKR]: "%%ONYX Mode WALJET_Pn_600x1200_6P^WALJET_Pln [CMYKR]"
+*Mode OnyxMode41/custom: "%%ONYX Mode custom^custom [CMYKR]"
+*Mode OnyxMode42/__18_custom_[CMYKR]: "%%ONYX Mode custom^custom [CMYKR]"
+*Mode OnyxMode43/__18_custom2_[CMYKR]: "%%ONYX Mode custom^custom2 [CMYKR]"
+*Mode OnyxMode44/custom2: "%%ONYX Mode custom2^custom2 [CMYKR]"
+*Mode OnyxMode45/__19_custom2_[CMYKR]: "%%ONYX Mode custom2^custom2 [CMYKR]"
+*Mode OnyxMode46/600-CT,_Normal_Graphics: "%%ONYX Mode 600-CT, Normal Graphics^HP Artist Matte Canvas [RGB Contone]"
+*Mode OnyxMode47/_20HPArtistMatteCanvas[RGBContone]: "%%ONYX Mode 600-CT, Normal Graphics^HP Artist Matte Canvas [RGB Contone]"
+*Mode OnyxMode48/20HPEverydayAdhesiveMattePolypropy: "%%ONYX Mode 600-CT, Normal Graphics^HP Everyday Adhesive Matte Polypropylene [RGB Contone]"
+*Mode OnyxMode49/20HPHeavyweightCoatedPaper[RGBCont: "%%ONYX Mode 600-CT, Normal Graphics^HP Heavyweight Coated Paper [RGB Contone]"
+*Mode OnyxMode50/__20_HP_Opaque_Scrim_[RGB_Contone]: "%%ONYX Mode 600-CT, Normal Graphics^HP Opaque Scrim [RGB Contone]"
+*Mode OnyxMode51/20HPPremiumInstant-dryGlossPhotoPa: "%%ONYX Mode 600-CT, Normal Graphics^HP Premium Instant-dry Gloss Photo Paper [RGB Contone]"
+*Mode OnyxMode52/20HPPremiumInstant-drySatinPhotoPa: "%%ONYX Mode 600-CT, Normal Graphics^HP Premium Instant-dry Satin Photo Paper [RGB Contone]"
+*Mode OnyxMode53/20HPPremiumVividColorBacklitFilm[R: "%%ONYX Mode 600-CT, Normal Graphics^HP Premium Vivid Color Backlit Film [RGB Contone]"
+*Mode OnyxMode54/600-CT_Normal_Graphics: "%%ONYX Mode 600-CT Normal Graphics^HP Everyday Pigment Ink Gloss Photo Paper [RGB Contone]"
+*Mode OnyxMode55/21HPEverydayPigmentInkGlossPhotoPa: "%%ONYX Mode 600-CT Normal Graphics^HP Everyday Pigment Ink Gloss Photo Paper [RGB Contone]"
+*Mode OnyxMode56/21HPEverydayPigmentInkSatinPhotoPa: "%%ONYX Mode 600-CT Normal Graphics^HP Everyday Pigment Ink Satin Photo Paper [RGB Contone]"
+*Mode OnyxMode57/600-CT_Normal: "%%ONYX Mode 600-CT Normal^HP Super Heavyweight Plus Matte Paper [RGB Contone]"
+*Mode OnyxMode58/22HPSuperHeavyweightPlusMattePaper: "%%ONYX Mode 600-CT Normal^HP Super Heavyweight Plus Matte Paper [RGB Contone]"
+*CloseUI *Mode
+
+*% HotFolder option
+*OpenUI *HotFolder/Quick Set: PickOne
+*OrderDependency: 15 AnySetup *HotFolder
+*DefaultHotFolder: Default
+*HotFolder Default: ""
+*HotFolder HotFolder0/aRGB_source_image: "%%ONYX HotFolder aRGB source image"
+*HotFolder HotFolder1/New_quickset: "%%ONYX HotFolder New quickset"
+*CloseUI *HotFolder
+
+
+
+*% End of PPD file for PosterShop Server
+

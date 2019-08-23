@@ -26,6 +26,7 @@
         var pNameList = app.printPresetsList;
         for(var i=0;i<pNameList.length;i++){
             $.writeln(pNameList[i]);
+            
         }
         $.writeln("===================");   
     }
@@ -55,9 +56,19 @@
         }
     }
     */
+    function getPPD(printObj){
+        var ppd = printObj.PPDName;
+         $.writeln(ppd);
+        /*
+        for (var p in ppd){
+            $.writeln(ppd[p]);
+        }
+        */
+    }
     
     getPrinters();
     getPrisets();
+    
     var printObj = new PrintOptions();
     for( var key in printObj){
         try{
@@ -66,6 +77,7 @@
 
         }
     }
+    getPPD(printObj);
     PrintOut();
     
 })();

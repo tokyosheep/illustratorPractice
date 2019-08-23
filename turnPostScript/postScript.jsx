@@ -1,6 +1,14 @@
 (function(){
     printPostScript();
     function printPostScript(){
+        
+        app.executeMenuCommand("selectall");//メニューコマンド実行
+        var flag = activeDocument.fitArtboardToSelectedArt(0);
+        if(!flag){
+            alert("there's no any artboard");
+            return false;
+        }
+        
         app.userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;//アラート回避宣言
         
         var desktopFolder = Folder.desktop +"/inputPrint";
@@ -9,7 +17,20 @@
         var jobOpts = new PrintJobOptions();
         var opts = new PrintOptions();
         //opts.printerName = "Adobe PostScript ファイル";
-        opts.printPreset = "PostScript";
+        opts.printPreset = "DP";
+        
+        //opts.paperSize = "カスタム";
+        //opts.PPDName = "HP DJ Z6200 60-1 Onyx PosterShop 10.1";
+        
+
+
+        var paperOpts = new PrintPaperOptions;
+        var boardWidth =app.activeDocument.artboards[0].artboardRect[2];
+        var boardHeight = Math.abs( app.activeDocument.artboards[0].artboardRect[3] );
+        paperOpts.name = "カスタム";
+        paperOpts.width = boardWidth + 0.0;
+        paperOpts.height = boardHeight + 0.0;
+        opts.printArea = PrintingBounds.ARTBOARDBOUNDS;
         opts.jobOptions = jobOpts;
         /*
             var colorOpt = new PrintColorManagementOptions();
