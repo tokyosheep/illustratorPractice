@@ -10,15 +10,32 @@
         var printers = app.printerList;
         for(var i=0;i<printers.length;i++){
             $.writeln(printers[i]);
+            $.writeln(printers[i].name);
+            getPrinterInfo(printers[i].printerInfo);
         }
         $.writeln("===================");
         
-        var pl = app.printerList[1];
+        var pl = app.printerList[0];
         var papers = pl.printerInfo.paperSizes;
         for(var j=0;j<papers.length;j++){
             $.writeln(papers[j]);            
         }
         $.writeln("===================");
+        var paper = app.printerList[1].printerInfo.paperSizes[0];
+        for(var prop in paper ){
+            $.writeln(prop+"::"+paper[prop]);
+            $.writeln(prop+"::"+typeof paper[prop]);
+            var info = paper.paperInfo;
+            for(var ke in info){
+                $.writeln(ke +"::"+info[ke]);
+            }
+        }
+        function getPrinterInfo(printer){
+            for(var p in printer){
+                $.writeln(p +":" + printer[p]);
+            }
+            $.writeln("=========================");
+        }
     }
 
     function getPrisets(){
@@ -26,8 +43,16 @@
         var pNameList = app.printPresetsList;
         for(var i=0;i<pNameList.length;i++){
             $.writeln(pNameList[i]);
+            
         }
         $.writeln("===================");   
+    }
+
+    function getPrintOptions(){
+        var printOpts = new PrintOptions();
+        for(var p in printOpts){
+            $.writeln(p +":"+printOpts[p]);
+        }
     }
 
     function PrintOut(){
@@ -55,17 +80,29 @@
         }
     }
     */
+    function getPPD(printObj){
+        var ppd = printObj.PPDName;
+         $.writeln(ppd);
+        /*
+        for (var p in ppd){
+            $.writeln(ppd[p]);
+        }
+        */
+    }
     
     getPrinters();
     getPrisets();
+    getPrintOptions();
     var printObj = new PrintOptions();
+    printObj.printPreset = "DP";
     for( var key in printObj){
         try{
-            $.writeln(key);
+            $.writeln(key+":"+printObj[key]);
         }catch(e){
 
         }
     }
+    getPPD(printObj);
     PrintOut();
     
 })();

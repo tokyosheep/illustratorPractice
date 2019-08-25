@@ -1,6 +1,15 @@
 (function(){
     printPostScript();
     function printPostScript(){
+        /*
+        app.executeMenuCommand("selectall");//オブジェクトをアートボードに合わせる命令
+        var flag = activeDocument.fitArtboardToSelectedArt(0);
+        
+        if(!flag){
+            alert("there's no any artboard");
+            return false;
+        }
+        */
         app.userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;//アラート回避宣言
         
         var desktopFolder = Folder.desktop +"/inputPrint";
@@ -8,10 +17,30 @@
         var docPath, docs, psPath;
         var jobOpts = new PrintJobOptions();
         var opts = new PrintOptions();
-        //opts.printerName = "Adobe PostScript ファイル";
-        opts.printPreset = "PostScript";
+        
+        opts.printPreset = "DP"//プリセットでオプションを全て決める
+        opts.printArea = PrintingBounds.ARTBOARDBOUNDS;
         opts.jobOptions = jobOpts;
-        /*
+        //opts.printerName = "Adobe PostScript ファイル";
+        //opts.PPDName = "HP DJ Z6200 60-2 Onyx PosterShop 10.1";
+        
+
+        /*ペーパーオプション（実際無効）
+        var paperOpts = new PrintPaperOptions;
+        opts.paperOptions = paperOpts;
+        var boardWidth =app.activeDocument.artboards[0].artboardRect[2];
+        var boardHeight = Math.abs( app.activeDocument.artboards[0].artboardRect[3] );
+        $.writeln(opts.name);
+        $.writeln(printerList[0].printerInfo.paperSizes.length);
+        paperOpts.name = "カスタム";
+        $.writeln(boardWidth);
+        $.writeln(boardHeight);
+        paperOpts.width = parseFloat(boardWidth)*2 + 0.0;
+        paperOpts.height = parseFloat(boardHeight)*2 + 0.0;
+        
+        
+        */
+        /*カラーマネジメントオプション
             var colorOpt = new PrintColorManagementOptions();
             colorOpt.colorProfileMode = PrintColorProfile.SOURCEPROFILE;
             colorOpt.name = "ColorMatch RGB";
@@ -37,7 +66,7 @@
                 app.activeDocument.print(opts);
                 app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
             }catch(e){
-                alert("timeOut");
+                alert(e);
                 return;
             }
         }
