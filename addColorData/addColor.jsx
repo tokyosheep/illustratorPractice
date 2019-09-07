@@ -3,22 +3,54 @@
     var doc = app.activeDocument;
     doc.rulerOrigin = [0, doc.height];//座標の原点をアートボードの左上に設定
     $.writeln(app.activeDocument.documentColorSpace);
-    var WriteColorData = function(){
-        
-        this.select = activeDocument.selection[0];
+    var WriteColorData = function(select){    
+        this.select = select;
         this.colorSpace = app.activeDocument.documentColorSpace;
         this.textObj = activeDocument.textFrames.add();
-
+        this.strong = 0;
         this.color = this.setColor();
+        if(!this.color) return false;
+        this.textFillColor = this.readObjColor();
     }
 
     WriteColorData.prototype.setColor = function(){
-            var color = {};
-            for(var key in this.select.fillColor){
-                color[key] = this.select.fillColor[key];
-                $.writeln(this.select.fillColor[key]);
+            var itemColor;
+            if(this.select.fillColor.typename === "SpotColor"){
+                for( p in this.select.fillColor.spot.color){
+                    $.writeln("spot porperty::"+p);
+                }
+                $.writeln(this.select.fillColor.spot.name);
+                itemColor = this.select.fillColor.spot.color;
+            }else if(this.select.fillColor.typename === "RGBColor"||select.fillColor.typename === "CMYKColor"){
+                itemColor = this.select.fillColor;
+            }else{
+                return false;
             }
+            var color = {};
+            for(var key in itemColor){
+                color[key] = itemColor[key];
+                var num = parseFloat(itemColor[key]);
+                $.writeln(num);
+                if(key == "black"){
+                    this.strong += num*2;
+                }else if(isNaN(num)){
+                    continue
+                }else{
+                    this.strong += num;
+                }
+            }
+            $.writeln("strong:"+this.strong);
             return color;
+    }
+
+    WriteColorData.prototype.readObjColor = function(){
+        if(this.colorSpace == "DocumentColorSpace.CMYK" && this.strong > 200){
+            return "white";
+        }
+        if(this.colorSpace == "DocumentColorSpace.RGB" && this.strong < 370){
+            return "white";
+        }
+        return "black;"
     }
 
     WriteColorData.prototype.setTextColor = function(keyColor){
@@ -83,8 +115,9 @@
     }
 
     WriteColorData.prototype.writeDown = function(){
+        if(!this.color) return false;
         this.textObj.contents = this.constructText();
-        var colorObj = this.setTextColor("white");
+        var colorObj = this.setTextColor(this.textFillColor);
 
         for(var i=0;i<this.textObj.characters.length;i++){
             this.textObj.characters[i].size = 15;
@@ -94,8 +127,15 @@
         $.writeln(this.select.left);
         this.textObj.left = this.select.left;
         this.textObj.top = this.select.top - this.select.height + this.textObj.height;
+        this.textObj.move(lay, ElementPlacement.PLACEATBEGINNING);
     }
-    var writeData = new WriteColorData();
-    writeData.writeDown();
+
+    for(var n=0;n<activeDocument.selection.length;n++){
+        var lay = app.activeDocument.layers.add();
+        lay.name = "color data";
+        var writeData = new WriteColorData(activeDocument.selection[n]);
+        writeData.writeDown();
+    }
+    
     
 })();
