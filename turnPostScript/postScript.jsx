@@ -1,6 +1,13 @@
 (function(){
     printPostScript();
     function printPostScript(){
+        var doc = app.activeDocument;
+        doc.rulerOrigin = [0, doc.height];//座標の原点をアートボードの左上に設定
+
+        /*ただのアートボードの位置
+        app.activeDocument.cropBox[3] = 300;
+        $.writeln(app.activeDocument.cropBox);
+        */
         /*
         app.executeMenuCommand("selectall");//オブジェクトをアートボードに合わせる命令
         var flag = activeDocument.fitArtboardToSelectedArt(0);
@@ -12,6 +19,7 @@
         */
         app.userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;//アラート回避宣言
         
+        
         var desktopFolder = Folder.desktop +"/inputPrint";
         makefolder(desktopFolder);
         var docPath, docs, psPath;
@@ -19,8 +27,12 @@
         var opts = new PrintOptions();
         
         opts.printPreset = "DP"//プリセットでオプションを全て決める
+        opts.designation = PrintArtworkDesignation.VISIBLEPRINTABLELAYERS;
         opts.printArea = PrintingBounds.ARTBOARDBOUNDS;
         opts.jobOptions = jobOpts;
+
+        var myPrintPrefs = app.activeDocument.printPreferences;
+        
         //opts.printerName = "Adobe PostScript ファイル";
         //opts.PPDName = "HP DJ Z6200 60-2 Onyx PosterShop 10.1";
         
@@ -64,6 +76,7 @@
             jobOpts.file = new File(desktopFolder+"/"+getTIme()+name);
             try{
                 app.activeDocument.print(opts);
+                reWritePs(desktopFolder+"/"+getTIme()+name,desktopFolder+"/"+getTIme()+"re"+name);
                 app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
             }catch(e){
                 alert(e);
@@ -102,5 +115,27 @@
         var hours = dt.getHours();
         var minutes = dt.getMinutes();
         return date+"D"+hours+"H"+minutes+"M";
+    }
+
+    function reWritePs(path,another){
+        try{
+            var rect = app.activeDocument.artboards[0].artboardRect;
+            $.writeln(rect[0]);
+            var more = new File(another);
+            var f = new File(path);
+            f.open("r");
+            var content = f.read();
+            //$.write(content);
+            var sample = content.match(/(\*CustomPageSize\sTrue\n)((\d+.\d*\s){4,4})/ig);
+            $.writeln(sample[0]);
+            var str = content.replace(/-*\d+\.\d+\stranslate/,rect[3]+" translate");
+            f.close();
+
+            more.open("w");
+            more.writeln(str);
+            more.close();
+        }catch(e){
+            alert(e);
+        }
     }
 })();
