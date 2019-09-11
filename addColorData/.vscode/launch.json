@@ -8,7 +8,7 @@
             "type": "extendscript-debug",
             "request": "launch",
             "name": "Ask for script name",
-            "program": "${workspaceFolder}/colorBar_fitArtBoard.jsx",
+            "program": "${workspaceFolder}/addColor.jsx",
             "stopOnEntry": false
         }
     ]
