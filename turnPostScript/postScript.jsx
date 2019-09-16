@@ -126,14 +126,20 @@
             f.open("r");
             var content = f.read();
             //$.write(content);
-            var sample = content.match(/(\*CustomPageSize\sTrue\n)((\d+.\d*\s){4,4})/ig);
-            $.writeln(sample[0]);
-            var str = content.replace(/-*\d+\.\d+\stranslate/,rect[3]+" translate");
+            var sample = content.replace(/(\*CustomPageSize\sTrue\n)((\d+.\d*\s){4,4})/g,"*CustomPageSize True\n"+parseFloat(rect[2]) +" "+ Math.abs(parseFloat(rect[3])) +" "+ "0.000000 " + "0.000000 ");
+            $.writeln(sample);
+            var str = sample.replace(/-*\d+\.\d+\stranslate/,rect[3]+" translate");
+            //var reWrite = str.replace(/-*\d+\.\d+\stranslate/,);
             f.close();
 
+            /*
             more.open("w");
             more.writeln(str);
             more.close();
+            */
+            f.open("w");
+            f.writeln(str);
+            f.close();
         }catch(e){
             alert(e);
         }
