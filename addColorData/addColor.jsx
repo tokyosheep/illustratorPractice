@@ -21,7 +21,7 @@
                 }
                 $.writeln(this.select.fillColor.spot.name);
                 itemColor = this.select.fillColor.spot.color;
-            }else if(this.select.fillColor.typename === "RGBColor"||select.fillColor.typename === "CMYKColor"){
+            }else if(this.select.fillColor.typename === "RGBColor"||this.select.fillColor.typename === "CMYKColor"){
                 itemColor = this.select.fillColor;
             }else{
                 return false;
@@ -105,7 +105,7 @@
         for(var key in this.color){
             this.color[key] = parseFloat(this.color[key]);
             if(!isNaN(this.color[key])){
-                this.color[key] = Math.floor(this.color[key]);
+                this.color[key] = this.color[key].toFixed(2);
             }else{
                 continue;
             }
