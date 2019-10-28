@@ -8,7 +8,7 @@
             "type": "extendscript-debug",
             "request": "launch",
             "name": "Ask for script name",
-            "program": "${workspaceFolder}/addColor.jsx",
+            "program": "${workspaceFolder}/replaces.jsx",
             "stopOnEntry": false
         }
     ]
