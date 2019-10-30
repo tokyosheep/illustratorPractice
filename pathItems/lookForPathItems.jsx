@@ -9,9 +9,8 @@
 
     RichBlack.prototype.isRich = function(obj){
         for(var key in this.color){
-            $.writeln("key :"+key);
-            $.writeln("color"+this.color[key]);
-            $.writeln("obj"+obj[key]);
+            $.writeln("path :"+obj[key]);
+            $.writeln("rich :"+this.color[key]);
             if(parseFloat(this.color[key]) != parseFloat(obj[key])){
                 return false;
             }
@@ -51,7 +50,6 @@
         if(this.pigment.isRich(item.fillColor))return false;
         if(this.sureColor.isRich(item.fillColor))return false;
         var black = parseFloat(item.fillColor.black);
-        $.writeln("item.fillColor.black :"+item.fillColor.black);
         return black > 95;
     }
 
@@ -59,7 +57,6 @@
         var sum = 0;
         sum = parseFloat(color.fillColor.cyan) + parseFloat(color.fillColor.magenta) + parseFloat(color.fillColor.yellow);
         sum += parseFloat(color.fillColor.black)*2;
-        $.writeln("sum"+sum);
         return sum > 199;
     }
 
