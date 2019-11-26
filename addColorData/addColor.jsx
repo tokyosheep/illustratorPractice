@@ -1,11 +1,13 @@
+/* this script get color data and write on selected item */
 (function(){
     "use strict";
     var doc = app.activeDocument;
-    doc.rulerOrigin = [0, doc.height];//座標の原点をアートボードの左上に設定
+    doc.rulerOrigin = [0, doc.height];
     $.writeln(app.activeDocument.documentColorSpace);
+    /*get color data from selected item*/
     var WriteColorData = function(select){    
         this.select = select;
-        this.colorSpace = app.activeDocument.documentColorSpace;
+        this.colorSpace = app.activeDocument.documentColorSpace;//get active document color space
         this.textObj = activeDocument.textFrames.add();
         this.strong = 0;
         this.color = this.setColor();
@@ -16,6 +18,7 @@
     WriteColorData.prototype.setColor = function(){
             var itemColor;
             if(this.select.fillColor.typename === "SpotColor"){
+                /*for debug it shows property of spot color*/
                 for( p in this.select.fillColor.spot.color){
                     $.writeln("spot porperty::"+p);
                 }

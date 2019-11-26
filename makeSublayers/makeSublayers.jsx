@@ -1,5 +1,5 @@
+/* this script just make sub layers */
 (function(){
-
     var LayersObj = function(limit){
         this.limit = limit;
         this.num = 0;
