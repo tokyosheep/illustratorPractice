@@ -9,13 +9,19 @@
 
     RichBlack.prototype.isRich = function(obj){
         for(var key in this.color){
+            /*
             $.writeln("path :"+obj[key]);
             $.writeln("rich :"+this.color[key]);
-            if(parseFloat(this.color[key]) != parseFloat(obj[key])){
+            */
+            if(isSameColor(parseFloat(this.color[key]),Math.round(parseFloat(obj[key])))){
                 return false;
             }
         }
         return true;
+        function isSameColor(color1,color2){
+            var val = color1 - color2;
+            return val < 0 ? -val : val;
+        }
     }
 
 
@@ -32,8 +38,8 @@
     FindColor.prototype.CheckColors = function(){
         for(var i=0;i<this.items.length;i++){
             try{
+                //$.writeln(this.items[i].fillColor.colorType);
                 if(this.getBlack(this.items[i])&&this.isStrongColor(this.items[i])){
-                    $.writeln("black");
                     this.items[i].selected = true;
                     app.executeMenuCommand("Find Fill & Stroke menu item");
                     return;

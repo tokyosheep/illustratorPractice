@@ -2,7 +2,7 @@
     "use strict";
     var doc = app.activeDocument;
     doc.rulerOrigin = [0, doc.height];//座標の原点をアートボードの左上に設定
-    $.writeln(app.activeDocument.documentColorSpace);
+    //$.writeln(app.activeDocument.documentColorSpace);
     var WriteColorData = function(select){    
         this.select = select;
         this.colorSpace = app.activeDocument.documentColorSpace;
@@ -17,9 +17,8 @@
             var itemColor;
             if(this.select.fillColor.typename === "SpotColor"){
                 for( p in this.select.fillColor.spot.color){
-                    $.writeln("spot porperty::"+p);
                 }
-                $.writeln(this.select.fillColor.spot.name);
+                //$.writeln(this.select.fillColor.spot.name);
                 itemColor = this.select.fillColor.spot.color;
             }else if(this.select.fillColor.typename === "RGBColor"||this.select.fillColor.typename === "CMYKColor"){
                 itemColor = this.select.fillColor;
@@ -30,7 +29,6 @@
             for(var key in itemColor){
                 color[key] = itemColor[key];
                 var num = parseFloat(itemColor[key]);
-                $.writeln(num);
                 if(key == "black"){
                     this.strong += num*2;
                 }else if(isNaN(num)){
@@ -39,7 +37,6 @@
                     this.strong += num;
                 }
             }
-            $.writeln("strong:"+this.strong);
             return color;
     }
 
@@ -63,10 +60,8 @@
             yellow:0,
             black:0,
             setColor:function(num){
-                $.writeln(num);
                 for(var p in this){
                     this[p] = num;
-                    $.writeln(this[p]);
                 }
             }
         }
@@ -124,15 +119,14 @@
             this.textObj.characters[i].fillColor = colorObj;
             //$.writeln(this.textObj.characters[i].size);
         }
-        $.writeln(this.select.left);
         this.textObj.left = this.select.left;
         this.textObj.top = this.select.top - this.select.height + this.textObj.height;
         this.textObj.move(lay, ElementPlacement.PLACEATBEGINNING);
     }
-
+    var lay = app.activeDocument.layers.add();
+    lay.name = "color data";
     for(var n=0;n<activeDocument.selection.length;n++){
-        var lay = app.activeDocument.layers.add();
-        lay.name = "color data";
+        
         var writeData = new WriteColorData(activeDocument.selection[n]);
         writeData.writeDown();
     }
