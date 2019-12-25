@@ -1,3 +1,4 @@
+/* investigate images on Illustrator */ 
 (function(){
     var images = activeDocument.placedItems;
     for(var i=0;i<images.length;i++){

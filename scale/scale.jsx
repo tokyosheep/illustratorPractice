@@ -1,10 +1,10 @@
+/* this script resize selected item through the action */
 (function(){
-
     var Resize = {
-        scale:40,
-        set:"wakwakwakwak",
-        name:"sasdfdffadfdf152",
-        path:Folder.desktop + "/",
+        scale:40,//resize ratio
+        set:"wakwakwakwak",//action set 
+        name:"sasdfdffadfdf152",// action name
+        path:Folder.desktop + "/",//action path
         createAction:function(){
             try{
             	var f = File(this.path +this.set+ ".aia");
@@ -20,20 +20,21 @@
 	        }
         },
         launchAction:function(){
-            app.doScript(this.action,this.set);
+            app.doScript(this.name,this.set);
             app.unloadAction(this.set, "");
         },
         setScaleStr:function(){
+			/* write scale action string*/
             var scaleAction = [
                     "/version 3",
-            "/name [ 5",
-            	"7363616c65",
+            "/name ["+this.set.length,
+            	ascii2Hex (this.set),
             "]",
             "/isOpen 1",
             "/actionCount 1",
             "/action-1 {",
-            	"/name [ 5",
-            		"7363616c65",
+            	"/name ["+this.name.length,
+            		ascii2Hex (this.name),
             	"]",
             	"/keyIndex 0",
             	"/colorIndex 0",
@@ -66,7 +67,7 @@
             			"/key 1935895653",
             			"/showInPalette 4294967295",
             			"/type (unit real)",
-            			"/value " + this.scale,
+            			"/value " + this.scale+".0",//you must add decimal point
             			"/unit 592474723",
             		"}",
             		"/parameter-4 {",
@@ -82,8 +83,12 @@
             this.str = scaleAction;
         }
     }
+
+	function  ascii2Hex (hex) {
+    	return hex.replace(/./g, function (a) {return a.charCodeAt(0).toString(16)})
+	}
     
     Resize.setScaleStr();
-    Resize.createAction();
+    if(!Resize.createAction())return;
     Resize.launchAction();
 })();

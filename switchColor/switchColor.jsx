@@ -1,3 +1,4 @@
+/* this script shows switch colors property */
 (function(){
     if(app.documents.length<1){
         alert("you don't open any document");
@@ -10,16 +11,15 @@
     for(var i=2;i<swatches.length;i++){
         objects.push(copyObject(swatches[i]));
     }
-    //return JSON.stringify(objects);
 
     function copyObject(original){
         var replace = {};
 
         replace.name = original.name;
-        //replace.color = original.color;
         if(original.color.typename != "CMYKColor" && original.color.typename != "RGBColor"){
             return false;
         }
+        $.writeln("switch name ::"+replace.name);
         for(var p in original.color){
             replace[p] = original.color[p];
             $.writeln(p+"::"+replace[p]);
