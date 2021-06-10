@@ -43,8 +43,10 @@ scale
 実行させるかのサンプルになります。
 
 
-
-
 *** 13 December added gradient jsx ***
 
 *** 2019年　12月　13日　グラデーションのオブジェクトを取得するjsx追加 ***
+
+*** 06 June added duplicateGradient jsx ***
+
+*** 2021年　06月　10日　グラデーションを複製するjsxを追加 ***
